@@ -22,7 +22,7 @@ The reported variables are:
 .	Car insurance premiums;
 .	Losses incurred by insurance companies for collisions per insured driver.
 
-![](images/Immagine1.jpg)
+![](images/Immagine1.png)
 
 
 ##Data partitioning
