@@ -37,7 +37,7 @@ y_test <- testData$g
 
 lmMod <- lm(g ~ ., trainingData)  # the linear reg model
 summary (lmMod) # get summary
-vif(lmMod) # get VIF
+plot(lmMod)
 
 predicted <- predict(lmMod, testData)  # predict on test data
 compare <- cbind(actual=testData$g, predicted)  # combine actual and predicted
@@ -73,22 +73,20 @@ table <- data.frame()
 
 plot(lambdas,coef)
 
-
-  fit.name <- paste(lambdas <- c(1,5,10,20,50,100))
   
-  pred <- c(pred1 = x_test %*% matrix(c(ridge1$coef[1]), ncol=1,nrow=6),
-          pred2 =  x_test %*% matrix(c(ridge2$coef[1]), ncol=1,nrow=6),
-          pred3 =  x_test %*% matrix(c(ridge3$coef[1]), ncol=1,nrow=6),
-          pred4 =  x_test %*% matrix(c(ridge4$coef[1]), ncol=1,nrow=6),
-          pred5 =  x_test %*% matrix(c(ridge5$coef[1]), ncol=1,nrow=6),
-          pred6 =  x_test %*% matrix(c(ridge6$coef[1]), ncol=1,nrow=6))
+  pred <- c(pred1 <-  x_test %*% matrix(c(ridge1$coef[1]), ncol=1,nrow=6),
+          pred2 <-  x_test %*% matrix(c(ridge2$coef[1]), ncol=1,nrow=6),
+          pred3 <-  x_test %*% matrix(c(ridge3$coef[1]), ncol=1,nrow=6),
+          pred4 <-  x_test %*% matrix(c(ridge4$coef[1]), ncol=1,nrow=6),
+          pred5 <-  x_test %*% matrix(c(ridge5$coef[1]), ncol=1,nrow=6),
+          pred6 <-  x_test %*% matrix(c(ridge6$coef[1]), ncol=1,nrow=6))
 
-mse <- c(mse1 = mean((y_test-pred1)^(2)),
-         mse2 = mean((y_test-pred2)^(2)),
-         mse3 = mean((y_test-pred3)^(2)),
-         mse4 = mean((y_test-pred4)^(2)),
-         mse5 = mean((y_test-pred5)^(2)),
-         mse6 = mean((y_test-pred6)^(2)))
+mse <- c(mse1 <- mean((y_test-pred1)^(2)),
+         mse2 <- mean((y_test-pred2)^(2)),
+         mse3 <- mean((y_test-pred3)^(2)),
+         mse4 <- mean((y_test-pred4)^(2)),
+         mse5 <- mean((y_test-pred5)^(2)),
+         mse6 <- mean((y_test-pred6)^(2)))
 table <- data.frame(lambdas,mse=mse)
 }
 show(table)
